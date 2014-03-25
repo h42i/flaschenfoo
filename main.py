@@ -10,7 +10,7 @@ from datetime import datetime
 from evdev import InputDevice, list_devices, ecodes, events
 
 class KeyCash:
-    def __init__(self, config_path, key_device, scan_device):
+    def __init__(self, config_path, scan_device):
         config_file = open(config_path, 'r')
         config_str = config_file.read()
         config_file.close()
@@ -108,6 +108,6 @@ class KeyCash:
                         self._accumulator.append(key_event.keycode)
 
 if __name__ == '__main__':
-    key_cash = KeyCash('cash.conf', None, '/dev/input/event0')
+    key_cash = KeyCash('cash.conf', '/dev/input/event0')
     
     key_cash.loop()
